@@ -19,8 +19,8 @@ jobs:
     name: Validate Gradle Wrapper
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: gradle/wrapper-validation-action@v2
+      - uses: actions/checkout@main
+      - uses: gradle/wrapper-validation-action@main
 
   build:
     needs: validate
@@ -29,13 +29,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Set up JDK 21
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@main
         with:
           java-version: '21'
           distribution: 'temurin'
 
       - name: Setup Gradle
-        uses: gradle/gradle-build-action@v3
+        uses: gradle/gradle-build-action@main
         with:
           gradle-version: wrapper
 
@@ -48,7 +48,7 @@ jobs:
         run: ./gradlew test
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@main
         with:
           name: Package
           path: build/libs/*.jar
@@ -60,12 +60,12 @@ jobs:
 
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@main
         with:
           name: Package
 
       - name: Upload Release Asset
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@master
         with:
           files: "*.jar"
         env:
