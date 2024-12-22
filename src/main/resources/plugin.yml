@@ -1,0 +1,7 @@
+name: Atom
+version: '1.0.0-SNAPSHOT'
+main: com.artaphy.atom.Atom
+api-version: '1.21'
+load: STARTUP
+authors: [ Artaphy ]
+description: A Minecraft plugin framework for easy customization and extension.
